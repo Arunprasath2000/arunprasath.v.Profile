@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arunprasath | Senior .NET Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:linear-gradient(-45deg,#0f172a,#1e293b,#0f172a,#111827);
+  background-size:400% 400%;
+  animation:gradientMove 12s ease infinite;
+  color:#f1f5f9;
+  overflow-x:hidden;
+}
+
+@keyframes gradientMove{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+/* NAVBAR */
+header{
+  position:fixed;
+  width:100%;
+  padding:15px 8%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  transition:0.4s;
+  z-index:1000;
+}
+
+header.scrolled{
+  background:rgba(15,23,42,0.95);
+  backdrop-filter:blur(10px);
+}
+
+header h2{
+  color:#38bdf8;
+}
+
+nav{
+  display:flex;
+  gap:20px;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  position:relative;
+}
+
+nav a::after{
+  content:"";
+  position:absolute;
+  width:0%;
+  height:2px;
+  bottom:-4px;
+  left:0;
+  background:#38bdf8;
+  transition:0.3s;
+}
+
+nav a:hover::after{
+  width:100%;
+}
+
+/* Mobile */
+.menu-toggle{
+  display:none;
+  font-size:24px;
+  cursor:pointer;
+}
+
+@media(max-width:768px){
+  nav{
+    position:absolute;
+    top:60px;
+    right:0;
+    background:#1e293b;
+    flex-direction:column;
+    padding:20px;
+    width:200px;
+    display:none;
+  }
+  nav.active{display:flex;}
+  .menu-toggle{display:block;}
+}
+
+/* Sections */
+section{
+  padding:120px 8%;
+  opacity:0;
+  transform:translateY(40px);
+  transition:all 1s ease;
+}
+
+section.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* HERO */
+.hero{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+  gap:40px;
+}
+
+.hero-text{
+  flex:1;
+  min-width:280px;
+}
+
+.hero-text h1{
+  font-size:45px;
+}
+
+.typing{
+  color:#38bdf8;
+}
+
+.hero-img{
+  flex:1;
+  text-align:center;
+}
+
+.hero-img img{
+  width:260px;
+  border-radius:20px;
+  box-shadow:0 10px 40px rgba(56,189,248,0.4);
+  animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-15px);}
+}
+
+/* Cards */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+  margin-top:40px;
+}
+
+.card{
+  background:#1e293b;
+  padding:20px;
+  border-radius:15px;
+  transition:0.4s;
+  transform:translateY(20px);
+  opacity:0;
+}
+
+.card.show{
+  transform:translateY(0);
+  opacity:1;
+}
+
+.card:hover{
+  transform:translateY(-8px) scale(1.02);
+  box-shadow:0 10px 30px rgba(56,189,248,0.3);
+}
+
+/* Timeline */
+.timeline{
+  border-left:2px solid #38bdf8;
+  padding-left:20px;
+  margin-top:20px;
+}
+
+.timeline-item{
+  margin-bottom:25px;
+  opacity:0;
+  transform:translateX(-30px);
+  transition:all 1s ease;
+}
+
+.timeline-item.show{
+  opacity:1;
+  transform:translateX(0);
+}
+
+/* Button */
+button{
+  margin-top:20px;
+  padding:10px 20px;
+  border:none;
+  border-radius:25px;
+  background:#38bdf8;
+  font-weight:600;
+  cursor:pointer;
+  overflow:hidden;
+  position:relative;
+}
+
+button:hover{
+  box-shadow:0 0 20px #38bdf8;
+}
+
+/* Footer */
+footer{
+  text-align:center;
+  padding:30px;
+  border-top:1px solid #1e293b;
+}
+
+/* Responsive Hero */
+@media(max-width:768px){
+  .hero{
+    flex-direction:column;
+    text-align:center;
+  }
+  .hero-text h1{
+    font-size:30px;
+  }
+}
+</style>
+</head>
+<body>
+
+<header id="header">
+  <h2>ARUN PRASATH.V</h2>
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+  <nav id="nav">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+  </nav>
+</header>
+
+<section id="about" class="hero">
+  <div class="hero-text">
+    <h1>Arun Prasath V</h1>
+    <h3><span class="typing"></span></h3>
+    <p>4+ years experience in ASP.NET, ASP.NET Core, MVC, SQL Server,JavaScript, DevExtreme & enterprise applications.</p>
+   <!-- <button onclick="window.print()">Download Resume</button>-->
+  </div>
+  <div class="hero-img">
+    <img src="profilephoto.jpeg">
+  </div>
+</section>
+
+<section id="skills">
+  <h2>Technical Expertise</h2>
+  <div class="grid">
+    <div class="card">ASP.NET, ASP.NET Core, MVC, Web API, C#,Swagger Page</div>
+    <div class="card">JavaScript, jQuery, Bootstrap5, HTML, css</div>
+    <div class="card">SQL Server, Stored Procedures, View, SQL Job</div>
+  </div>
+</section>
+
+<section id="experience">
+  <h2>Experience</h2>
+  <div class="timeline">
+    <div class="timeline-item"><b>Senior .NET Developer</b> (2022–Present),
+     </br> SPARK IT Tech,
+     </br> Tiruppur,
+     </br> TamilNadu
+</div>
+</br>
+ <h2>Education</h2>
+
+  <div class="timeline">
+    <div class="timeline-item"><b>M.C.A </b> (2020–2022),
+    </br> M.P.N.M.J Engineering College,Chennimalai-638 051
+    </br> TamilNadu
+    </div>
+    <div class="timeline-item"><b>B.Sc (Computer Science)</b> (2017–2020),
+     </br> Dr.R.A.N.M Arts and Science College,
+     </br> Erode -09,
+     </br> TamilNadu
+</div>
+   
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="grid">
+    <div class="card"><b>SCM - Suppliy Chain Mangement System</b>
+</br>
+Supply Chain Management (SCM) System is an end-to-end procurement and inventory management solution that handles the complete material lifecycle from Purchase Indent (PI) to Goods Receipt Note (GRN).
+
+The system streamlines procurement operations by integrating departments such as Stores, Purchase, Finance, and Vendors to ensure efficient material planning, sourcing, receiving, and stock management.
+</br>
+<b>.NET MVC, C#, HTML, Bootstrap, js, jQuery, DevExtreme and DevExpress,SQL</b>
+</br>
+</br>
+<b>Excel Export Module – Power Query Integration </b>
+</br>
+Developed an Excel Export module using Power Query to extract and consolidate data from SCM database tables for reporting and analysis purposes.
+
+The module enables users to fetch real-time data collections such as Purchase Indents, Purchase Orders, GRN details, and inventory records directly into Excel. It ensures structured data transformation, filtering, and automated refresh capability for accurate reporting.
+</br>
+<b>VB, Power Query </b>
+
+</br>
+</br>
+
+<b>Sample Module – New Development & Redevelopment </b>
+</br>
+Developed a Sample Module within the SCM system to manage sample order requests for both New Development (ND) and Redevelopment (RD) processes.
+
+The module enables users to raise, track, and manage sample-related orders before bulk procurement. It supports workflow approvals, quantity tracking, development volume capture, and status monitoring to ensure proper validation prior to final production orders.
+
+</br>
+</br>
+
+</div>
+    <div class="card"><b>M-Force Mobile App – API Development</b>
+</br>
+M-Force Mobile App is an IT Fair-based online ordering portal designed to facilitate digital product booking and order management through a mobile platform. The application enables users to browse products, place orders, track order status, and manage transactions seamlessly.
+
+The project involved developing secure and scalable RESTful APIs to support mobile application functionalities such as user authentication, product listing, cart management, order processing, payment integration, and real-time order tracking.
+
+</br>
+<b>.NET Core, C# </b>
+</br>
+</br>
+<b> Data Exchange Project – SAP & SCM Integration </b>
+</br>
+Developed a Data Exchange module to integrate SAP ERP with the SCM system through secure API connectivity.
+
+The module facilitates seamless data flow between SAP and SCM, where Project Requests created in SAP are transmitted via Data Exchange APIs and stored in SCM database tables. Once received, the data automatically triggers and continues the standard SCM process flow, ensuring synchronized operations across systems.
+</br>
+<b>.NET Core, C# </b>
+</br>
+</br>
+<b>HR Portal – Attendance & Workforce Management System</b>
+</br>
+Developed an HR Portal to manage employee attendance, check-in/check-out tracking, timesheet entry, and leave management processes.
+
+The system enables employees to record daily attendance, submit timesheets, apply for leave, and track approval status through a centralized platform. It also provides administrative controls for attendance monitoring, leave balance management, and report generation.
+
+This solution improved workforce transparency, streamlined approval workflows, reduced manual HR processing, and enhanced overall employee data management efficiency.
+
+</br>
+<b>.NET Core, C#, HTML,css, JavaScript, JQuery </b>
+</div>
+  </div>
+</section>
+
+<footer>
+  arunprasathit2000@gmail.com |  .NET Developer
+</footer>
+
+<script>
+function toggleMenu(){
+  document.getElementById("nav").classList.toggle("active");
+}
+
+// Navbar scroll effect
+window.addEventListener("scroll",()=>{
+  document.getElementById("header").classList.toggle("scrolled",window.scrollY>50);
+});
+
+// Scroll reveal with stagger
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+    }
+  });
+},{threshold:0.2});
+
+document.querySelectorAll("section,.card,.timeline-item").forEach(el=>{
+  observer.observe(el);
+});
+
+// Typing animation
+const roles=[".NET Developer","Full Stack Developer"];
+let i=0,j=0,current="",isDeleting=false;
+
+function type(){
+  if(i<roles.length){
+    if(!isDeleting && j<=roles[i].length){
+      current=roles[i].substring(0,j++);
+    }
+    if(isDeleting && j>=0){
+      current=roles[i].substring(0,j--);
+    }
+    document.querySelector(".typing").textContent=current;
+    if(j==roles[i].length) isDeleting=true;
+    if(j==0 && isDeleting){isDeleting=false;i++;}
+  } else i=0;
+}
+setInterval(type,100);
+</script>
+
+</body>
+</html>
