@@ -1,430 +1,532 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Arunprasath | Senior .NET Developer</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
+<title>Arun Prasath V — Senior .NET Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Poppins',sans-serif;
+:root{
+  --ink:#0f1117;--ink2:#3a3f4a;--ink3:#6b717d;
+  --paper:#fafaf8;--white:#ffffff;
+  --rule:#e4e4df;--rule2:#d0d0c8;
+  --blue:#1a56db;--blue-bg:#eff4ff;
+  --green:#087443;--green-bg:#f0fdf4;
+  --gold:#92600a;--gold-bg:#fffbeb;
+  --surface:#f4f4f0;
+  --r:4px;--rlg:8px;
 }
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--paper);color:var(--ink);font-family:'Inter',sans-serif;font-weight:400;line-height:1.7;overflow-x:hidden;}
 
-body{
-  background:linear-gradient(-45deg,#0f172a,#1e293b,#0f172a,#111827);
-  background-size:400% 400%;
-  animation:gradientMove 12s ease infinite;
-  color:#f1f5f9;
-  overflow-x:hidden;
-}
-
-@keyframes gradientMove{
-  0%{background-position:0% 50%;}
-  50%{background-position:100% 50%;}
-  100%{background-position:0% 50%;}
-}
-
-/* NAVBAR */
-header{
-  position:fixed;
-  width:100%;
-  padding:15px 8%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  transition:0.4s;
-  z-index:1000;
-}
-
-header.scrolled{
-  background:rgba(15,23,42,0.95);
-  backdrop-filter:blur(10px);
-}
-
-header h2{
-  color:#38bdf8;
-}
-
-nav{
-  display:flex;
-  gap:20px;
-}
-
-nav a{
-  color:white;
-  text-decoration:none;
-  position:relative;
-}
-
-nav a::after{
-  content:"";
-  position:absolute;
-  width:0%;
-  height:2px;
-  bottom:-4px;
-  left:0;
-  background:#38bdf8;
-  transition:0.3s;
-}
-
-nav a:hover::after{
-  width:100%;
-}
-
-/* Mobile */
-.menu-toggle{
-  display:none;
-  font-size:24px;
-  cursor:pointer;
-}
-
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(250,250,248,0.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--rule);padding:0 6%;display:flex;align-items:center;justify-content:space-between;height:60px;transition:box-shadow .3s;}
+nav.shadow{box-shadow:0 1px 24px rgba(0,0,0,.06);}
+.nav-brand{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--ink);text-decoration:none;}
+.nav-links{display:flex;gap:28px;align-items:center;}
+.nav-links a{font-size:.82rem;font-weight:500;letter-spacing:.4px;color:var(--ink3);text-decoration:none;text-transform:uppercase;transition:color .2s;}
+.nav-links a:hover{color:var(--ink);}
+.nav-cta{background:var(--ink)!important;color:var(--white)!important;padding:7px 18px;border-radius:var(--r);}
+.hamburger{display:none;cursor:pointer;flex-direction:column;gap:5px;}
+.hamburger span{width:22px;height:1.5px;background:var(--ink);border-radius:2px;}
 @media(max-width:768px){
-  nav{
-    position:absolute;
-    top:60px;
-    right:0;
-    background:#1e293b;
-    flex-direction:column;
-    padding:20px;
-    width:200px;
-    display:none;
-  }
-  nav.active{display:flex;}
-  .menu-toggle{display:block;}
+  .hamburger{display:flex;}
+  .nav-links{display:none;position:absolute;top:60px;left:0;right:0;background:var(--white);border-bottom:1px solid var(--rule);flex-direction:column;padding:20px 6%;gap:16px;}
+  .nav-links.open{display:flex;}
 }
 
-/* Sections */
-section{
-  padding:120px 8%;
-  opacity:0;
-  transform:translateY(40px);
-  transition:all 1s ease;
-}
-
-section.show{
-  opacity:1;
-  transform:translateY(0);
-}
+/* LAYOUT */
+.wrap{max-width:1080px;margin:0 auto;padding:0 6%;}
 
 /* HERO */
-.hero{
-  display:flex;
-  flex-wrap:wrap;
-  align-items:center;
-  justify-content:space-between;
-  gap:40px;
-}
-
-.hero-text{
-  flex:1;
-  min-width:280px;
-}
-
-.hero-text h1{
-  font-size:45px;
-}
-
-.typing{
-  color:#38bdf8;
-}
-
-.hero-img{
-  flex:1;
-  text-align:center;
-}
-
-.hero-img img{
-  width:260px;
-  border-radius:20px;
-  box-shadow:0 10px 40px rgba(56,189,248,0.4);
-  animation:float 4s ease-in-out infinite;
-}
-
-@keyframes float{
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-15px);}
-}
-
-/* Cards */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:25px;
-  margin-top:40px;
-}
-
-.card{
-  background:#1e293b;
-  padding:20px;
-  border-radius:15px;
-  transition:0.4s;
-  transform:translateY(20px);
-  opacity:0;
-}
-
-.card.show{
-  transform:translateY(0);
-  opacity:1;
-}
-
-.card:hover{
-  transform:translateY(-8px) scale(1.02);
-  box-shadow:0 10px 30px rgba(56,189,248,0.3);
-}
-
-/* Timeline */
-.timeline{
-  border-left:2px solid #38bdf8;
-  padding-left:20px;
-  margin-top:20px;
-}
-
-.timeline-item{
-  margin-bottom:25px;
-  opacity:0;
-  transform:translateX(-30px);
-  transition:all 1s ease;
-}
-
-.timeline-item.show{
-  opacity:1;
-  transform:translateX(0);
-}
-
-/* Button */
-button{
-  margin-top:20px;
-  padding:10px 20px;
-  border:none;
-  border-radius:25px;
-  background:#38bdf8;
-  font-weight:600;
-  cursor:pointer;
-  overflow:hidden;
-  position:relative;
-}
-
-button:hover{
-  box-shadow:0 0 20px #38bdf8;
-}
-
-/* Footer */
-footer{
-  text-align:center;
-  padding:30px;
-  border-top:1px solid #1e293b;
-}
-
-/* Responsive Hero */
+.hero{padding:140px 6% 100px;max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:80px;align-items:center;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.75rem;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:20px;}
+.hero-eyebrow::before{content:'';width:24px;height:1px;background:var(--blue);}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,4.5vw,3.6rem);font-weight:700;line-height:1.12;color:var(--ink);margin-bottom:20px;letter-spacing:-.5px;}
+.hero h1 em{font-style:normal;color:var(--ink3);}
+.hero-desc{font-size:1rem;color:var(--ink2);max-width:520px;margin-bottom:32px;line-height:1.75;}
+.hero-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px;}
+.chip{font-size:.75rem;font-weight:500;padding:4px 12px;border-radius:100px;border:1px solid;letter-spacing:.2px;}
+.chip-blue{background:var(--blue-bg);color:var(--blue);border-color:rgba(26,86,219,.2);}
+.chip-green{background:var(--green-bg);color:var(--green);border-color:rgba(8,116,67,.2);}
+.chip-gold{background:var(--gold-bg);color:var(--gold);border-color:rgba(146,96,10,.2);}
+.chip-gray{background:var(--surface);color:var(--ink2);border-color:var(--rule2);}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-p{background:var(--ink);color:var(--white);padding:11px 26px;border-radius:var(--r);font-size:.88rem;font-weight:500;text-decoration:none;letter-spacing:.2px;transition:background .2s,transform .15s;display:inline-flex;align-items:center;gap:8px;}
+.btn-p:hover{background:var(--ink2);transform:translateY(-1px);}
+.btn-o{background:transparent;color:var(--ink);padding:10px 24px;border-radius:var(--r);border:1px solid var(--rule2);font-size:.88rem;font-weight:500;text-decoration:none;letter-spacing:.2px;transition:border-color .2s,background .2s;display:inline-flex;align-items:center;gap:8px;}
+.btn-o:hover{border-color:var(--ink);background:var(--surface);}
+.avatar-block{display:flex;flex-direction:column;align-items:center;gap:20px;}
+.avatar{width:180px;height:180px;border-radius:var(--rlg);background:var(--surface);border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:3rem;font-weight:700;color:var(--ink3);overflow:hidden;}
+.avatar img{width:100%;height:100%;object-fit:cover;}
+.stat-row{display:flex;gap:1px;border:1px solid var(--rule);border-radius:var(--rlg);overflow:hidden;}
+.stat{background:var(--white);padding:14px 20px;text-align:center;border-right:1px solid var(--rule);min-width:80px;}
+.stat:last-child{border-right:none;}
+.stat-n{font-size:1.4rem;font-weight:600;color:var(--ink);font-family:'Playfair Display',serif;}
+.stat-l{font-size:.68rem;color:var(--ink3);text-transform:uppercase;letter-spacing:1px;margin-top:2px;}
 @media(max-width:768px){
-  .hero{
-    flex-direction:column;
-    text-align:center;
-  }
-  .hero-text h1{
-    font-size:30px;
-  }
+  .hero{grid-template-columns:1fr;padding:110px 6% 70px;gap:40px;}
+  .avatar-block{flex-direction:row;justify-content:flex-start;}
+  .avatar{width:100px;height:100px;font-size:2rem;}
 }
+
+.divider{border:none;border-top:1px solid var(--rule);}
+.section{padding:80px 0;}
+.sec-label{font-size:.72rem;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--ink3);margin-bottom:10px;}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,2.5vw,2rem);font-weight:700;color:var(--ink);margin-bottom:40px;}
+
+/* SKILLS */
+.skills-bg{background:var(--white);}
+.skills-table{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));border:1px solid var(--rule);border-radius:var(--rlg);overflow:hidden;}
+.skill-row{padding:22px 24px;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);background:var(--white);transition:background .2s;}
+.skill-row:hover{background:var(--surface);}
+.skill-cat{font-size:.72rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink3);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.skill-cat::before{content:'';width:3px;height:12px;background:var(--blue);border-radius:2px;}
+.skill-tags{display:flex;flex-wrap:wrap;gap:6px;}
+.stag{font-size:.78rem;padding:3px 10px;background:var(--surface);color:var(--ink2);border-radius:var(--r);border:1px solid var(--rule);}
+
+/* EXPERIENCE */
+.exp-card{border:1px solid var(--rule);border-radius:var(--rlg);overflow:hidden;background:var(--white);}
+.exp-header{padding:28px 32px;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:14px;}
+.exp-title{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:var(--ink);}
+.exp-co{font-size:.9rem;color:var(--ink2);margin-top:4px;}
+.exp-period{font-size:.76rem;font-weight:500;background:var(--blue-bg);color:var(--blue);border:1px solid rgba(26,86,219,.15);padding:5px 14px;border-radius:100px;white-space:nowrap;}
+.exp-body{padding:28px 32px;}
+.exp-list{list-style:none;display:flex;flex-direction:column;gap:11px;}
+.exp-list li{display:flex;gap:14px;font-size:.88rem;color:var(--ink2);line-height:1.65;}
+.exp-list li::before{content:'';width:5px;height:5px;background:var(--ink3);border-radius:50%;flex-shrink:0;margin-top:8px;}
+
+/* SECURITY */
+.sec-bg{background:var(--surface);}
+.sec-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;}
+.sec-card{background:var(--white);border:1px solid var(--rule);border-radius:var(--rlg);padding:22px 24px;border-left:3px solid var(--green);transition:transform .2s,box-shadow .2s;}
+.sec-card:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,0,0,.05);}
+.sec-card h5{font-size:.85rem;font-weight:600;color:var(--ink);margin-bottom:7px;}
+.sec-card p{font-size:.82rem;color:var(--ink3);line-height:1.6;}
+
+/* PROJECTS */
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px;}
+.proj-card{background:var(--white);border:1px solid var(--rule);border-radius:var(--rlg);padding:28px;display:flex;flex-direction:column;gap:14px;transition:transform .2s,box-shadow .2s;}
+.proj-card:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,.07);}
+.proj-num{font-size:.68rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--ink3);}
+.proj-card h3{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--ink);}
+.proj-card p{font-size:.83rem;color:var(--ink2);line-height:1.7;flex:1;}
+.proj-stack{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;}
+.ptag{font-size:.72rem;font-weight:500;background:var(--blue-bg);color:var(--blue);border:1px solid rgba(26,86,219,.15);padding:3px 9px;border-radius:var(--r);}
+
+/* EDUCATION */
+.edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;}
+.edu-card{background:var(--white);border:1px solid var(--rule);border-radius:var(--rlg);padding:22px 24px;}
+.edu-card .degree{font-size:.88rem;font-weight:600;color:var(--ink);margin-bottom:5px;line-height:1.4;}
+.edu-card .college{font-size:.78rem;color:var(--ink3);margin-bottom:14px;line-height:1.5;}
+.edu-meta{display:flex;flex-wrap:wrap;gap:6px;}
+.ec{font-size:.71rem;font-weight:500;padding:3px 9px;border-radius:var(--r);border:1px solid;}
+.ec-year{background:var(--surface);color:var(--ink2);border-color:var(--rule2);}
+.ec-score{background:var(--green-bg);color:var(--green);border-color:rgba(8,116,67,.2);}
+.ec-rank{background:var(--gold-bg);color:var(--gold);border-color:rgba(146,96,10,.2);}
+
+/* AWARDS */
+.aw-row{display:flex;gap:20px;flex-wrap:wrap;}
+.aw-card{flex:1;min-width:280px;background:var(--surface);border:1px solid var(--rule);border-radius:var(--rlg);padding:28px;display:flex;gap:18px;}
+.aw-icon{font-size:1.5rem;width:48px;height:48px;background:var(--white);border:1px solid var(--rule);border-radius:var(--r);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.aw-card h4{font-size:.92rem;font-weight:600;color:var(--ink);margin-bottom:4px;}
+.aw-year{font-size:.75rem;color:var(--ink3);margin-bottom:8px;}
+.aw-card p{font-size:.82rem;color:var(--ink2);line-height:1.6;}
+
+/* CONTACT */
+.ct-bg{background:var(--ink);padding:80px 0;}
+.ct-bg .sec-label{color:rgba(255,255,255,.4);}
+.ct-bg .sec-title{color:var(--white);}
+.ct-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;}
+.ct-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--rlg);padding:20px 22px;text-decoration:none;display:flex;align-items:center;gap:14px;transition:background .2s;}
+.ct-card:hover{background:rgba(255,255,255,.1);}
+.ct-icon{font-size:1.1rem;width:40px;height:40px;background:rgba(255,255,255,.08);border-radius:var(--r);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:rgba(255,255,255,.7);}
+.ct-lbl{font-size:.68rem;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;}
+.ct-val{font-size:.85rem;font-weight:500;color:rgba(255,255,255,.9);}
+
+/* FOOTER */
+footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.06);padding:24px 6%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.ft{font-size:.82rem;color:rgba(255,255,255,.3);}
+.ft-links{display:flex;gap:20px;}
+.ft-links a{font-size:.78rem;color:rgba(255,255,255,.35);text-decoration:none;transition:color .2s;}
+.ft-links a:hover{color:rgba(255,255,255,.65);}
+
+/* REVEAL */
+.fade{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease;}
+.fade.in{opacity:1;transform:none;}
+.fade:nth-child(2){transition-delay:.08s;}
+.fade:nth-child(3){transition-delay:.16s;}
+.fade:nth-child(4){transition-delay:.24s;}
+.fade:nth-child(5){transition-delay:.32s;}
+.fade:nth-child(6){transition-delay:.4s;}
+.fade:nth-child(7){transition-delay:.48s;}
 </style>
 </head>
 <body>
 
-<header id="header">
-  <h2>ARUN PRASATH.V</h2>
-  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-  <nav id="nav">
-    <a href="#about">About</a>
+<nav id="nav">
+  <a class="nav-brand" href="#">Arun Prasath V</a>
+  <div class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+  <div class="nav-links">
     <a href="#skills">Skills</a>
     <a href="#experience">Experience</a>
     <a href="#projects">Projects</a>
-  </nav>
-</header>
-
-<section id="about" class="hero">
-  <div class="hero-text">
-    <h1>Arun Prasath V</h1>
-    <h3><span class="typing"></span></h3>
-    <p>I’m a .NET Developer with 3.5+ years experience building enterprise APIs, SCM systems, mobile app integrations and backend modules. Skilled in ASP.NET Core, MVC, C#, SQL Server, and performance-oriented solutions.</p>
-   <!-- <button onclick="window.print()">Download Resume</button>-->
+    <a href="#education">Education</a>
+    <a href="#contact" class="nav-cta">Contact</a>
   </div>
-  <div class="hero-img">
-    <img src="profilephoto.jpeg">
-  </div>
-</section>
+</nav>
 
-<section id="skills">
-  <h2>Technical Expertise</h2>
-  <div class="grid">
-    <div class="card">ASP.NET, ASP.NET Core, MVC, Web API, C#,Swagger Page</div>
-    <div class="card">JavaScript, jQuery, Bootstrap5, HTML, css</div>
-    <div class="card">SQL Server, Stored Procedures, View, SQL Job</div>
-  </div>
-</section>
-
-<section id="experience">
-  <h2>Experience</h2>
-  <div class="timeline">
-    <div class="timeline-item"><b>Senior .NET Developer</b> (2022–Present),
-     </br> SPARK IT Tech,
-     </br> Tiruppur,
-     </br> TamilNadu
-</div>
-</br>
- <h2>Education</h2>
-
-  <div class="timeline">
-    <div class="timeline-item"><b>M.C.A </b> (2020–2022),
-    </br> M.P.N.M.J Engineering College,Chennimalai-638 051
-    </br> TamilNadu
+<div class="hero" id="about">
+  <div>
+    <p class="hero-eyebrow">Senior .NET Developer</p>
+    <h1>Arun Prasath V<br><em>Building Enterprise<br>Software that Scales</em></h1>
+    <p class="hero-desc">4 years of experience designing enterprise-grade web applications, REST APIs, and SCM systems at SPARK IT Tech, Tiruppur. Skilled in ASP.NET Core, C#, SQL Server, SAP ERP integration, and AI-assisted development.</p>
+    <div class="hero-chips">
+      <span class="chip chip-green">✦ Tech Innovation of the Year 2025</span>
+      <span class="chip chip-gold">✦ Workaholic Warrior 2025</span>
+      <span class="chip chip-blue">MCA · Dept. First Rank · 84%</span>
+      <span class="chip chip-gray">Tiruppur, Tamil Nadu</span>
     </div>
-    <div class="timeline-item"><b>B.Sc (Computer Science)</b> (2017–2020),
-     </br> Dr.R.A.N.M Arts and Science College,
-     </br> Erode -09,
-     </br> TamilNadu
+    <div class="hero-actions">
+      <a href="mailto:arunprasathit2000@gmail.com" class="btn-p">✉ Get in touch</a>
+      <a href="resume.pdf" download class="btn-o">↓ Download resume</a>
+    </div>
+  </div>
+  <div class="avatar-block">
+    <div class="avatar">AP</div>
+    <div class="stat-row">
+      <div class="stat"><div class="stat-n">4+</div><div class="stat-l">Years</div></div>
+      <div class="stat"><div class="stat-n">7</div><div class="stat-l">Projects</div></div>
+      <div class="stat"><div class="stat-n">2</div><div class="stat-l">Awards</div></div>
+    </div>
+  </div>
 </div>
-   
+
+<hr class="divider">
+
+<!-- SKILLS -->
+<section class="section skills-bg" id="skills">
+  <div class="wrap">
+    <p class="sec-label">Capabilities</p>
+    <p class="sec-title">Technical Skills</p>
+    <div class="skills-table">
+      <div class="skill-row fade">
+        <div class="skill-cat">Back-End</div>
+        <div class="skill-tags">
+          <span class="stag">ASP.NET Core</span><span class="stag">ASP.NET MVC</span>
+          <span class="stag">Web API</span><span class="stag">C#</span>
+          <span class="stag">RESTful APIs</span><span class="stag">Swagger / OpenAPI</span>
+        </div>
+      </div>
+      <div class="skill-row fade">
+        <div class="skill-cat">Front-End</div>
+        <div class="skill-tags">
+          <span class="stag">JavaScript</span><span class="stag">jQuery</span>
+          <span class="stag">HTML5</span><span class="stag">CSS3</span>
+          <span class="stag">Bootstrap 5</span><span class="stag">DevExtreme</span><span class="stag">DevExpress</span>
+        </div>
+      </div>
+      <div class="skill-row fade">
+        <div class="skill-cat">Database</div>
+        <div class="skill-tags">
+          <span class="stag">SQL Server</span><span class="stag">Stored Procedures</span>
+          <span class="stag">Views &amp; SQL Jobs</span><span class="stag">Power Query (VB)</span>
+        </div>
+      </div>
+      <div class="skill-row fade">
+        <div class="skill-cat">Integration</div>
+        <div class="skill-tags">
+          <span class="stag">SAP ERP Integration</span>
+          <span class="stag">Data Exchange APIs</span>
+          <span class="stag">SAP-SCM Data Flow</span>
+        </div>
+      </div>
+      <div class="skill-row fade">
+        <div class="skill-cat">AI &amp; Tooling</div>
+        <div class="skill-tags">
+          <span class="stag">Claude Code</span><span class="stag">AI-Assisted Dev</span>
+          <span class="stag">Prompt Engineering</span><span class="stag">LLM API Integration</span>
+        </div>
+      </div>
+      <div class="skill-row fade">
+        <div class="skill-cat">Security</div>
+        <div class="skill-tags">
+          <span class="stag">OWASP Top 10</span><span class="stag">SQL Injection Prevention</span>
+          <span class="stag">XSS / CSRF</span><span class="stag">Token Auth</span>
+          <span class="stag">RBAC</span><span class="stag">Secure API Design</span>
+        </div>
+      </div>
+      <div class="skill-row fade">
+        <div class="skill-cat">Tools</div>
+        <div class="skill-tags">
+          <span class="stag">Git</span><span class="stag">Visual Studio</span>
+          <span class="stag">IIS</span><span class="stag">Excel Automation</span><span class="stag">Mobile API Dev</span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<section id="projects">
-  <h2>Projects</h2>
-  <div class="grid">
-    <div class="card"><b>SCM - Suppliy Chain Mangement System</b>
-</br>
-Supply Chain Management (SCM) System is an end-to-end procurement and inventory management solution that handles the complete material lifecycle from Purchase Indent (PI) to Goods Receipt Note (GRN).
+<hr class="divider">
 
-The system streamlines procurement operations by integrating departments such as Stores, Purchase, Finance, and Vendors to ensure efficient material planning, sourcing, receiving, and stock management.
-</br>
-<b>.NET MVC, C#, HTML, Bootstrap, js, jQuery, DevExtreme and DevExpress,SQL</b>
-</br>
-</br>
-<b>Excel Export Module – Power Query Integration </b>
-</br>
-Developed an Excel Export module using Power Query to extract and consolidate data from SCM database tables for reporting and analysis purposes.
+<!-- EXPERIENCE -->
+<section class="section" id="experience">
+  <div class="wrap">
+    <p class="sec-label">Career</p>
+    <p class="sec-title">Professional Experience</p>
+    <div class="exp-card fade">
+      <div class="exp-header">
+        <div>
+          <div class="exp-title">Senior .NET Developer</div>
+          <div class="exp-co">SPARK IT Tech &nbsp;·&nbsp; Tiruppur, Tamil Nadu</div>
+        </div>
+        <div class="exp-period">Aug 2022 – Present &nbsp;·&nbsp; ~3 yrs 9 months</div>
+      </div>
+      <div class="exp-body">
+        <ul class="exp-list">
+          <li>Designed and developed enterprise-grade ASP.NET Core Web APIs consumed by mobile (M-Force App) and browser-based clients.</li>
+          <li>Built end-to-end Supply Chain Management system covering Purchase Indent → Purchase Order → GRN workflows across Stores, Finance, and Vendor departments.</li>
+          <li>Engineered SAP-ERP to SCM Data Exchange integration layer, enabling real-time Project Request synchronization via secure REST APIs.</li>
+          <li>Implemented application security measures including input validation, SQL injection prevention, XSS/CSRF protection, and secure API authentication.</li>
+          <li>Managed deployment processes including IIS configuration, environment setup, release management, and production monitoring.</li>
+          <li>Leveraged Claude Code (AI) for accelerated development, code review assistance, and intelligent debugging across multiple modules.</li>
+          <li>Developed Excel Export Module using Power Query and VB to automate report generation with live data refresh for PIs, POs, GRN, and inventory records.</li>
+          <li>Created Sample Module for New Development and Redevelopment workflows with approval routing, quantity tracking, and status monitoring.</li>
+          <li>Built HR Portal with attendance tracking, timesheet management, leave application workflows, and administrative dashboards.</li>
+          <li>Optimized SQL Server stored procedures, views, and scheduled jobs to improve query performance and data reliability.</li>
+          <li>Collaborated with cross-functional teams to gather requirements, design DB schemas, and deliver iterative releases.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
-The module enables users to fetch real-time data collections such as Purchase Indents, Purchase Orders, GRN details, and inventory records directly into Excel. It ensures structured data transformation, filtering, and automated refresh capability for accurate reporting.
-</br>
-<b>VB, Power Query </b>
+<hr class="divider">
 
-</br>
-</br>
+<!-- SECURITY -->
+<section class="section sec-bg">
+  <div class="wrap">
+    <p class="sec-label">Application Safety</p>
+    <p class="sec-title">Security Practices</p>
+    <div class="sec-grid">
+      <div class="sec-card fade">
+        <h5>OWASP Top 10 Compliance</h5>
+        <p>Applied OWASP Top 10 security guidelines to eliminate common vulnerabilities across all developed applications.</p>
+      </div>
+      <div class="sec-card fade">
+        <h5>SQL Injection Prevention</h5>
+        <p>Enforced parameterized queries and stored procedure usage throughout the data layer to prevent injection attacks.</p>
+      </div>
+      <div class="sec-card fade">
+        <h5>XSS &amp; CSRF Protection</h5>
+        <p>Implemented cross-site scripting and request forgery protections in all web-facing modules and APIs.</p>
+      </div>
+      <div class="sec-card fade">
+        <h5>Secure REST API Design</h5>
+        <p>Secured APIs with token-based authentication, input validation, and rate limiting to block unauthorized access.</p>
+      </div>
+      <div class="sec-card fade">
+        <h5>Data Encryption &amp; RBAC</h5>
+        <p>Enforced HTTPS, encrypted sensitive data at rest and in transit, and managed role-based access control.</p>
+      </div>
+      <div class="sec-card fade">
+        <h5>Security Code Reviews</h5>
+        <p>Conducted regular code reviews focused on security gaps to ensure no data leakage or broken access controls.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-<b>Sample Module – New Development & Redevelopment </b>
-</br>
-Developed a Sample Module within the SCM system to manage sample order requests for both New Development (ND) and Redevelopment (RD) processes.
+<hr class="divider">
 
-The module enables users to raise, track, and manage sample-related orders before bulk procurement. It supports workflow approvals, quantity tracking, development volume capture, and status monitoring to ensure proper validation prior to final production orders.
+<!-- PROJECTS -->
+<section class="section" id="projects">
+  <div class="wrap">
+    <p class="sec-label">Work</p>
+    <p class="sec-title">Key Projects</p>
+    <div class="proj-grid">
+      <div class="proj-card fade">
+        <div class="proj-num">01 · SCM System</div>
+        <h3>Supply Chain Management</h3>
+        <p>End-to-end procurement and inventory management covering the full PI → GRN lifecycle. Integrated Stores, Purchase, Finance, and Vendor departments into a single unified platform, reducing manual procurement errors and improving material tracking accuracy.</p>
+        <div class="proj-stack">
+          <span class="ptag">ASP.NET MVC</span><span class="ptag">C#</span>
+          <span class="ptag">DevExtreme</span><span class="ptag">SQL Server</span>
+        </div>
+      </div>
+      <div class="proj-card fade">
+        <div class="proj-num">02 · Excel Automation</div>
+        <h3>Power Query Export Module</h3>
+        <p>Automated extraction of live SCM data into Excel with structured transformation, filtering, and auto-refresh capability for PIs, POs, GRN, and inventory records — eliminating manual reporting overhead.</p>
+        <div class="proj-stack">
+          <span class="ptag">VB</span><span class="ptag">Microsoft Power Query</span>
+        </div>
+      </div>
+      <div class="proj-card fade">
+        <div class="proj-num">03 · SCM Module</div>
+        <h3>Sample Module — ND &amp; RD</h3>
+        <p>Developed within the SCM system to manage sample order requests for New Development and Redevelopment processes with workflow approvals, quantity tracking, and status monitoring prior to production orders.</p>
+        <div class="proj-stack">
+          <span class="ptag">ASP.NET MVC</span><span class="ptag">C#</span><span class="ptag">SQL Server</span>
+        </div>
+      </div>
+      <div class="proj-card fade">
+        <div class="proj-num">04 · Mobile Backend</div>
+        <h3>M-Force App — REST API</h3>
+        <p>Developed secure, scalable RESTful APIs for an IT-Fair online ordering portal supporting user authentication, product listing, cart management, order processing, payment integration, and real-time order tracking.</p>
+        <div class="proj-stack">
+          <span class="ptag">ASP.NET Core</span><span class="ptag">C#</span><span class="ptag">RESTful APIs</span>
+        </div>
+      </div>
+      <div class="proj-card fade">
+        <div class="proj-num">05 · ERP Integration</div>
+        <h3>Data Exchange — SAP &amp; SCM</h3>
+        <p>Built a secure integration layer bridging SAP ERP and the internal SCM system. Project Requests created in SAP are transmitted via APIs and automatically trigger the standard SCM workflow, ensuring synchronized operations.</p>
+        <div class="proj-stack">
+          <span class="ptag">ASP.NET Core</span><span class="ptag">C#</span><span class="ptag">SQL Server</span>
+        </div>
+      </div>
+      <div class="proj-card fade">
+        <div class="proj-num">06 · HR System</div>
+        <h3>HR Portal — Workforce Management</h3>
+        <p>Full employee attendance, check-in/out, timesheet, and leave management system with role-based admin dashboards. Streamlined approval workflows and significantly reduced manual HR processing.</p>
+        <div class="proj-stack">
+          <span class="ptag">ASP.NET Core</span><span class="ptag">C#</span>
+          <span class="ptag">JavaScript</span><span class="ptag">jQuery</span>
+        </div>
+      </div>
+      <div class="proj-card fade">
+        <div class="proj-num">07 · AI Integration</div>
+        <h3>Claude Code — AI-Assisted Dev</h3>
+        <p>Integrated Claude Code into the development workflow to accelerate feature development, automate repetitive coding tasks, and improve code quality through intelligent debugging, API design suggestions, and documentation generation.</p>
+        <div class="proj-stack">
+          <span class="ptag">Claude Code</span><span class="ptag">LLM API</span><span class="ptag">AI Workflows</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-</br>
-</br>
+<hr class="divider">
 
-</div>
-    <div class="card"><b>M-Force Mobile App – API Development</b>
-</br>
-M-Force Mobile App is an IT Fair-based online ordering portal designed to facilitate digital product booking and order management through a mobile platform. The application enables users to browse products, place orders, track order status, and manage transactions seamlessly.
+<!-- EDUCATION -->
+<section class="section sec-bg" id="education">
+  <div class="wrap">
+    <p class="sec-label">Academic Background</p>
+    <p class="sec-title">Education</p>
+    <div class="edu-grid">
+      <div class="edu-card fade">
+        <div class="degree">Master of Computer Applications (M.C.A)</div>
+        <div class="college">M.P.N.M.J Engineering College, Chennimalai</div>
+        <div class="edu-meta">
+          <span class="ec ec-year">2020 – 2022</span>
+          <span class="ec ec-score">84% · First Class</span>
+          <span class="ec ec-rank">★ Dept. First Rank</span>
+        </div>
+      </div>
+      <div class="edu-card fade">
+        <div class="degree">B.Sc in Computer Science</div>
+        <div class="college">Dr. R.A.N.M Arts and Science College, Erode</div>
+        <div class="edu-meta">
+          <span class="ec ec-year">2017 – 2020</span>
+          <span class="ec ec-score">73% · First Class</span>
+          <span class="ec ec-rank">★ Dept. First Rank</span>
+        </div>
+      </div>
+      <div class="edu-card fade">
+        <div class="degree">12th Standard (HSC)</div>
+        <div class="college">Tamil Nadu State Board</div>
+        <div class="edu-meta">
+          <span class="ec ec-year">2017</span>
+          <span class="ec ec-score">74%</span>
+        </div>
+      </div>
+      <div class="edu-card fade">
+        <div class="degree">10th Standard (SSLC)</div>
+        <div class="college">Tamil Nadu State Board</div>
+        <div class="edu-meta">
+          <span class="ec ec-year">2015</span>
+          <span class="ec ec-score">86.6%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-The project involved developing secure and scalable RESTful APIs to support mobile application functionalities such as user authentication, product listing, cart management, order processing, payment integration, and real-time order tracking.
+<hr class="divider">
 
-</br>
-<b>.NET Core, C# </b>
-</br>
-</br>
-<b> Data Exchange Project – SAP & SCM Integration </b>
-</br>
-Developed a Data Exchange module to integrate SAP ERP with the SCM system through secure API connectivity.
+<!-- AWARDS -->
+<section class="section" style="background:var(--white);">
+  <div class="wrap">
+    <p class="sec-label">Recognition</p>
+    <p class="sec-title">Awards &amp; Achievements</p>
+    <div class="aw-row">
+      <div class="aw-card fade">
+        <div class="aw-icon">🏆</div>
+        <div>
+          <h4>Tech Innovation of the Year</h4>
+          <div class="aw-year">SPARK IT Tech · 2025</div>
+          <p>Awarded in recognition of outstanding technical innovation and contribution to product development.</p>
+        </div>
+      </div>
+      <div class="aw-card fade">
+        <div class="aw-icon">⚡</div>
+        <div>
+          <h4>Workaholic Warrior</h4>
+          <div class="aw-year">SPARK IT Tech · 2025</div>
+          <p>Awarded in recognition of exceptional dedication, consistent hard work, and strong commitment to delivering quality results.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-The module facilitates seamless data flow between SAP and SCM, where Project Requests created in SAP are transmitted via Data Exchange APIs and stored in SCM database tables. Once received, the data automatically triggers and continues the standard SCM process flow, ensuring synchronized operations across systems.
-</br>
-<b>.NET Core, C# </b>
-</br>
-</br>
-<b>HR Portal – Attendance & Workforce Management System</b>
-</br>
-Developed an HR Portal to manage employee attendance, check-in/check-out tracking, timesheet entry, and leave management processes.
-
-The system enables employees to record daily attendance, submit timesheets, apply for leave, and track approval status through a centralized platform. It also provides administrative controls for attendance monitoring, leave balance management, and report generation.
-
-This solution improved workforce transparency, streamlined approval workflows, reduced manual HR processing, and enhanced overall employee data management efficiency.
-
-</br>
-<b>.NET Core, C#, HTML,css, JavaScript, JQuery </b>
-</div>
+<!-- CONTACT -->
+<section class="ct-bg" id="contact">
+  <div class="wrap">
+    <p class="sec-label">Get in Touch</p>
+    <p class="sec-title" style="margin-bottom:32px;">Let's Connect</p>
+    <div class="ct-grid">
+      <a href="mailto:arunprasathit2000@gmail.com" class="ct-card">
+        <div class="ct-icon">✉</div>
+        <div><div class="ct-lbl">Email</div><div class="ct-val">arunprasathit2000@gmail.com</div></div>
+      </a>
+      <a href="tel:+917598416322" class="ct-card">
+        <div class="ct-icon">☎</div>
+        <div><div class="ct-lbl">Phone</div><div class="ct-val">+91 75984 16322</div></div>
+      </a>
+      <a href="https://www.linkedin.com/in/arunprasath-v-5538b3336" target="_blank" class="ct-card">
+        <div class="ct-icon" style="font-size:.8rem;font-weight:700;">in</div>
+        <div><div class="ct-lbl">LinkedIn</div><div class="ct-val">arunprasath-v-5538b3336</div></div>
+      </a>
+      <a href="resume.pdf" download class="ct-card">
+        <div class="ct-icon">↓</div>
+        <div><div class="ct-lbl">Resume</div><div class="ct-val">Download PDF</div></div>
+      </a>
+    </div>
   </div>
 </section>
 
 <footer>
- <section id="contact">
-    <h2>Contact</h2>
-    <p>📧 Email: <a href="mailto:arunprasathit2000@gmail.com">arunprasathit2000@gmail.com</a></p>
-    
-    <p>🌐 LinkedIn: 
-        <a href="https://www.linkedin.com/in/arunprasath-v-5538b3336?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
-            LinkedIn
-        </a>
-    </p>
-    <!--  <p>💼 GitHub: 
-        <a href="https://github.com/arunprasath2000" target="_blank">
-            github.com/arunprasath2000
-        </a>
-    </p> 
-    -->
-   
-
-    <p>📄 Resume: 
-        <a href="resume.pdf" target="_blank" download>
-            Download Resume
-        </a>
-    </p>
-</section>
+  <span class="ft">© 2025 Arun Prasath V · Senior .NET Developer · Tiruppur, Tamil Nadu</span>
+  <div class="ft-links">
+    <a href="mailto:arunprasathit2000@gmail.com">Email</a>
+    <a href="https://www.linkedin.com/in/arunprasath-v-5538b3336" target="_blank">LinkedIn</a>
+    <a href="resume.pdf" download>Resume</a>
+  </div>
 </footer>
 
 <script>
-function toggleMenu(){
-  document.getElementById("nav").classList.toggle("active");
-}
-
-// Navbar scroll effect
-window.addEventListener("scroll",()=>{
-  document.getElementById("header").classList.toggle("scrolled",window.scrollY>50);
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('shadow',window.scrollY>10);
 });
-
-// Scroll reveal with stagger
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add("show");
-    }
-  });
-},{threshold:0.2});
-
-document.querySelectorAll("section,.card,.timeline-item").forEach(el=>{
-  observer.observe(el);
-});
-
-// Typing animation
-const roles=[".NET Developer","Full Stack Developer"];
-let i=0,j=0,current="",isDeleting=false;
-
-function type(){
-  if(i<roles.length){
-    if(!isDeleting && j<=roles[i].length){
-      current=roles[i].substring(0,j++);
-    }
-    if(isDeleting && j>=0){
-      current=roles[i].substring(0,j--);
-    }
-    document.querySelector(".typing").textContent=current;
-    if(j==roles[i].length) isDeleting=true;
-    if(j==0 && isDeleting){isDeleting=false;i++;}
-  } else i=0;
-}
-setInterval(type,100);
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});
+},{threshold:0.1});
+document.querySelectorAll('.fade').forEach(el=>io.observe(el));
 </script>
-
 </body>
 </html>
