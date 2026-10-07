@@ -8,154 +8,186 @@
 <meta property="og:title" content="Arun Prasath V — Senior .NET Full Stack Developer">
 <meta property="og:description" content="4+ years building enterprise SCM platforms, REST APIs, and bi-directional SAP ERP integrations.">
 <meta property="og:type" content="website">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#0f1117;--ink2:#3a3f4a;--ink3:#6b717d;
-  --paper:#fafaf8;--white:#ffffff;
-  --rule:#e4e4df;--rule2:#d0d0c8;
-  --blue:#1a56db;--blue-bg:#eff4ff;
-  --green:#087443;--green-bg:#f0fdf4;
-  --gold:#92600a;--gold-bg:#fffbeb;
-  --surface:#f4f4f0;
-  --r:4px;--rlg:8px;
+  --navy:#0a1222;--navy2:#0f1b33;--navy3:#16264a;
+  --ink:#0f172a;--ink2:#334155;--ink3:#64748b;
+  --paper:#f5f7fb;--white:#ffffff;
+  --rule:#e2e8f0;--rule2:#cbd5e1;
+  --teal:#14b8a6;--teal2:#2dd4bf;--sky:#38bdf8;--blue:#2563eb;
+  --blue-bg:#eff6ff;--teal-bg:#f0fdfa;
+  --green:#047857;--green-bg:#ecfdf5;
+  --gold:#b45309;--gold-bg:#fffbeb;
+  --surface:#f1f5f9;
+  --grad:linear-gradient(135deg,var(--teal2),var(--sky));
+  --r:6px;--rlg:14px;
+  --shadow:0 1px 2px rgba(15,23,42,.04),0 8px 24px rgba(15,23,42,.06);
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{background:var(--paper);color:var(--ink);font-family:'Inter',sans-serif;font-weight:400;line-height:1.7;overflow-x:hidden;}
+h1,h3,.sec-title,.exp-title,.nav-brand,.stat-n{font-family:'Plus Jakarta Sans','Inter',sans-serif;}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(250,250,248,0.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--rule);padding:0 6%;display:flex;align-items:center;justify-content:space-between;height:60px;transition:box-shadow .3s;}
-nav.shadow{box-shadow:0 1px 24px rgba(0,0,0,.06);}
-.nav-brand{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--ink);text-decoration:none;}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(10,18,34,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.08);padding:0 6%;display:flex;align-items:center;justify-content:space-between;height:64px;transition:background .3s,box-shadow .3s;}
+nav.shadow{background:rgba(10,18,34,.92);box-shadow:0 6px 30px rgba(0,0,0,.25);}
+.nav-brand{font-size:1.05rem;font-weight:800;color:#fff;text-decoration:none;display:flex;align-items:center;gap:10px;letter-spacing:-.2px;}
+.nav-brand::before{content:'AP';display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:9px;background:var(--grad);color:var(--navy);font-size:.78rem;font-weight:800;}
 .nav-links{display:flex;gap:28px;align-items:center;}
-.nav-links a{font-size:.82rem;font-weight:500;letter-spacing:.4px;color:var(--ink3);text-decoration:none;text-transform:uppercase;transition:color .2s;}
-.nav-links a:hover{color:var(--ink);}
-.nav-cta{background:var(--ink)!important;color:var(--white)!important;padding:7px 18px;border-radius:var(--r);}
+.nav-links a{font-size:.8rem;font-weight:500;letter-spacing:.6px;color:rgba(255,255,255,.65);text-decoration:none;text-transform:uppercase;transition:color .2s;}
+.nav-links a:hover{color:#fff;}
+.nav-cta{background:var(--grad)!important;color:var(--navy)!important;padding:8px 18px;border-radius:100px;font-weight:700!important;}
 .hamburger{display:none;cursor:pointer;flex-direction:column;gap:5px;}
-.hamburger span{width:22px;height:1.5px;background:var(--ink);border-radius:2px;}
+.hamburger span{width:22px;height:2px;background:#fff;border-radius:2px;}
 @media(max-width:768px){
   .hamburger{display:flex;}
-  .nav-links{display:none;position:absolute;top:60px;left:0;right:0;background:var(--white);border-bottom:1px solid var(--rule);flex-direction:column;padding:20px 6%;gap:16px;}
+  .nav-links{display:none;position:absolute;top:64px;left:0;right:0;background:var(--navy);border-bottom:1px solid rgba(255,255,255,.08);flex-direction:column;padding:20px 6%;gap:18px;}
   .nav-links.open{display:flex;}
 }
 
 /* LAYOUT */
-.wrap{max-width:1080px;margin:0 auto;padding:0 6%;}
+.wrap{max-width:1120px;margin:0 auto;padding:0 6%;}
 
 /* HERO */
-.hero{padding:140px 6% 100px;max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:80px;align-items:center;}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.75rem;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:20px;}
-.hero-eyebrow::before{content:'';width:24px;height:1px;background:var(--blue);}
-.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,4.5vw,3.6rem);font-weight:700;line-height:1.12;color:var(--ink);margin-bottom:20px;letter-spacing:-.5px;}
-.hero h1 em{font-style:normal;color:var(--ink3);}
-.hero-desc{font-size:1rem;color:var(--ink2);max-width:520px;margin-bottom:32px;line-height:1.75;}
-.hero-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px;}
-.chip{font-size:.75rem;font-weight:500;padding:4px 12px;border-radius:100px;border:1px solid;letter-spacing:.2px;}
-.chip-blue{background:var(--blue-bg);color:var(--blue);border-color:rgba(26,86,219,.2);}
-.chip-green{background:var(--green-bg);color:var(--green);border-color:rgba(8,116,67,.2);}
-.chip-gold{background:var(--gold-bg);color:var(--gold);border-color:rgba(146,96,10,.2);}
-.chip-gray{background:var(--surface);color:var(--ink2);border-color:var(--rule2);}
+.hero-bg{position:relative;overflow:hidden;background:radial-gradient(900px 500px at 85% 10%,rgba(45,212,191,.18),transparent 60%),radial-gradient(700px 500px at 0% 100%,rgba(56,189,248,.14),transparent 60%),linear-gradient(160deg,var(--navy) 0%,var(--navy2) 55%,var(--navy3) 100%);color:#fff;}
+.hero-bg::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(to bottom,#000 30%,transparent 95%);-webkit-mask-image:linear-gradient(to bottom,#000 30%,transparent 95%);pointer-events:none;}
+.hero{position:relative;padding:150px 6% 110px;max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:70px;align-items:center;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.74rem;font-weight:600;letter-spacing:2.4px;text-transform:uppercase;color:var(--teal2);margin-bottom:22px;padding:6px 14px;border:1px solid rgba(45,212,191,.3);border-radius:100px;background:rgba(45,212,191,.08);}
+.hero-eyebrow::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--teal2);box-shadow:0 0 0 0 rgba(45,212,191,.6);animation:pulse 2s infinite;}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(45,212,191,.55);}70%{box-shadow:0 0 0 10px rgba(45,212,191,0);}100%{box-shadow:0 0 0 0 rgba(45,212,191,0);}}
+.hero h1{font-size:clamp(2.5rem,5vw,3.9rem);font-weight:800;line-height:1.08;color:#fff;margin-bottom:22px;letter-spacing:-1.2px;}
+.hero h1 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.hero-desc{font-size:1.02rem;color:rgba(226,232,240,.78);max-width:580px;margin-bottom:30px;line-height:1.8;}
+.hero-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:34px;}
+.chip{font-size:.75rem;font-weight:500;padding:5px 13px;border-radius:100px;border:1px solid;letter-spacing:.2px;}
+.chip-blue{background:rgba(56,189,248,.1);color:#7dd3fc;border-color:rgba(56,189,248,.3);}
+.chip-green{background:rgba(45,212,191,.1);color:#5eead4;border-color:rgba(45,212,191,.3);}
+.chip-gold{background:rgba(251,191,36,.1);color:#fcd34d;border-color:rgba(251,191,36,.3);}
+.chip-gray{background:rgba(255,255,255,.06);color:rgba(255,255,255,.75);border-color:rgba(255,255,255,.15);}
 .hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
-.btn-p{background:var(--ink);color:var(--white);padding:11px 26px;border-radius:var(--r);font-size:.88rem;font-weight:500;text-decoration:none;letter-spacing:.2px;transition:background .2s,transform .15s;display:inline-flex;align-items:center;gap:8px;}
-.btn-p:hover{background:var(--ink2);transform:translateY(-1px);}
-.btn-o{background:transparent;color:var(--ink);padding:10px 24px;border-radius:var(--r);border:1px solid var(--rule2);font-size:.88rem;font-weight:500;text-decoration:none;letter-spacing:.2px;transition:border-color .2s,background .2s;display:inline-flex;align-items:center;gap:8px;}
-.btn-o:hover{border-color:var(--ink);background:var(--surface);}
-.avatar-block{display:flex;flex-direction:column;align-items:center;gap:20px;}
-.avatar{width:200px;height:250px;border-radius:var(--rlg);background:var(--surface);border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:3rem;font-weight:700;color:var(--ink3);overflow:hidden;}
-.avatar img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
-.stat-row{display:flex;gap:1px;border:1px solid var(--rule);border-radius:var(--rlg);overflow:hidden;}
-.stat{background:var(--white);padding:14px 20px;text-align:center;border-right:1px solid var(--rule);min-width:80px;}
+.btn-p{background:var(--grad);color:var(--navy);padding:12px 26px;border-radius:100px;font-size:.9rem;font-weight:700;text-decoration:none;transition:transform .2s,box-shadow .2s;display:inline-flex;align-items:center;gap:8px;box-shadow:0 8px 24px rgba(45,212,191,.25);}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(45,212,191,.38);}
+.btn-o{background:rgba(255,255,255,.04);color:#fff;padding:11px 24px;border-radius:100px;border:1px solid rgba(255,255,255,.22);font-size:.9rem;font-weight:500;text-decoration:none;transition:border-color .2s,background .2s;display:inline-flex;align-items:center;gap:8px;}
+.btn-o:hover{border-color:var(--teal2);background:rgba(45,212,191,.08);}
+.avatar-block{display:flex;flex-direction:column;align-items:center;gap:26px;}
+.avatar{width:190px;height:190px;border-radius:50%;padding:4px;background:var(--grad);box-shadow:0 0 0 8px rgba(45,212,191,.08),0 20px 60px rgba(45,212,191,.25);overflow:hidden;position:relative;}
+.avatar img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;border-radius:50%;border:4px solid var(--navy2);}
+.stat-row{display:flex;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--rlg);overflow:hidden;backdrop-filter:blur(6px);}
+.stat{padding:14px 20px;text-align:center;border-right:1px solid rgba(255,255,255,.1);min-width:84px;}
 .stat:last-child{border-right:none;}
-.stat-n{font-size:1.4rem;font-weight:600;color:var(--ink);font-family:'Playfair Display',serif;}
-.stat-l{font-size:.68rem;color:var(--ink3);text-transform:uppercase;letter-spacing:1px;margin-top:2px;}
+.stat-n{font-size:1.5rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.3;}
+.stat-l{font-size:.66rem;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:1.2px;margin-top:2px;}
 @media(max-width:768px){
-  .hero{grid-template-columns:1fr;padding:110px 6% 70px;gap:40px;}
-  .avatar-block{flex-direction:row;justify-content:flex-start;align-items:center;}
-  .avatar{width:110px;height:138px;font-size:2rem;}
+  .hero{grid-template-columns:1fr;padding:118px 6% 70px;gap:40px;}
+  .hero>div{min-width:0;}
+  .avatar-block{flex-direction:row;flex-wrap:wrap;justify-content:flex-start;align-items:center;gap:18px;order:-1;}
+  .avatar{width:104px;height:104px;padding:3px;}
+  .avatar img{border-width:3px;}
+  .stat{padding:12px 14px;min-width:0;}
+  .chip{max-width:100%;}
 }
 
-.divider{border:none;border-top:1px solid var(--rule);}
-.section{padding:80px 0;}
-.sec-label{font-size:.72rem;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--ink3);margin-bottom:10px;}
-.sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,2.5vw,2rem);font-weight:700;color:var(--ink);margin-bottom:40px;}
+.divider{display:none;}
+.section{padding:90px 0;}
+.sec-label{display:inline-flex;align-items:center;gap:10px;font-size:.72rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:10px;}
+.sec-label::before{content:'';width:22px;height:2px;background:var(--grad);border-radius:2px;}
+.sec-title{font-size:clamp(1.7rem,3vw,2.3rem);font-weight:800;color:var(--ink);margin-bottom:44px;letter-spacing:-.6px;}
 
 /* SKILLS */
 .skills-bg{background:var(--white);}
-.skills-table{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));border:1px solid var(--rule);border-radius:var(--rlg);overflow:hidden;}
-.skill-row{padding:22px 24px;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);background:var(--white);transition:background .2s;}
-.skill-row:hover{background:var(--surface);}
-.skill-cat{font-size:.72rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink3);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
-.skill-cat::before{content:'';width:3px;height:12px;background:var(--blue);border-radius:2px;}
+.skills-table{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;}
+.skill-row{padding:22px 24px;border:1px solid var(--rule);border-radius:var(--rlg);background:var(--white);transition:transform .25s,box-shadow .25s,border-color .25s;position:relative;overflow:hidden;}
+.skill-row::after{content:'';position:absolute;left:0;top:0;right:0;height:3px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .35s;}
+.skill-row:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:transparent;}
+.skill-row:hover::after{transform:scaleX(1);}
+.skill-cat{font-size:.74rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink);margin-bottom:12px;display:flex;align-items:center;gap:9px;}
+.skill-cat::before{content:'';width:8px;height:8px;border-radius:3px;background:var(--grad);}
 .skill-tags{display:flex;flex-wrap:wrap;gap:6px;}
-.stag{font-size:.78rem;padding:3px 10px;background:var(--surface);color:var(--ink2);border-radius:var(--r);border:1px solid var(--rule);}
+.stag{font-size:.78rem;padding:4px 11px;background:var(--surface);color:var(--ink2);border-radius:100px;border:1px solid var(--rule);transition:all .2s;}
+.skill-row:hover .stag{background:var(--teal-bg);border-color:rgba(20,184,166,.25);color:#0f766e;}
 
 /* EXPERIENCE */
-.exp-card{border:1px solid var(--rule);border-radius:var(--rlg);overflow:hidden;background:var(--white);}
-.exp-header{padding:28px 32px;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:14px;}
-.exp-title{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:var(--ink);}
-.exp-co{font-size:.9rem;color:var(--ink2);margin-top:4px;}
-.exp-period{font-size:.76rem;font-weight:500;background:var(--blue-bg);color:var(--blue);border:1px solid rgba(26,86,219,.15);padding:5px 14px;border-radius:100px;white-space:nowrap;}
-.exp-body{padding:28px 32px;}
-.exp-list{list-style:none;display:flex;flex-direction:column;gap:11px;}
-.exp-list li{display:flex;gap:14px;font-size:.88rem;color:var(--ink2);line-height:1.65;}
-.exp-list li::before{content:'';width:5px;height:5px;background:var(--ink3);border-radius:50%;flex-shrink:0;margin-top:8px;}
+.exp-card{border:1px solid var(--rule);border-radius:var(--rlg);overflow:hidden;background:var(--white);box-shadow:var(--shadow);}
+.exp-header{padding:26px 32px;background:linear-gradient(120deg,var(--navy),var(--navy3));display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;}
+.exp-title{font-size:1.3rem;font-weight:800;color:#fff;}
+.exp-co{font-size:.88rem;color:rgba(255,255,255,.65);margin-top:2px;}
+.exp-period{font-size:.76rem;font-weight:600;background:rgba(45,212,191,.12);color:#5eead4;border:1px solid rgba(45,212,191,.35);padding:6px 14px;border-radius:100px;white-space:nowrap;}
+.exp-body{padding:32px;}
+.exp-list{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.exp-list li{display:flex;gap:12px;font-size:.89rem;color:var(--ink2);line-height:1.65;}
+.exp-list li::before{content:'';width:6px;height:6px;background:var(--teal);border-radius:2px;transform:rotate(45deg);flex-shrink:0;margin-top:9px;}
+.role{position:relative;padding-left:26px;border-left:2px solid var(--rule);}
+.role+.role{margin-top:34px;}
+.role::before{content:'';position:absolute;left:-8px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--grad);box-shadow:0 0 0 4px var(--white),0 0 0 5px rgba(20,184,166,.3);}
+.role-head{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px 14px;margin-bottom:14px;}
+.role-title{font-size:1.04rem;font-weight:700;color:var(--ink);}
+.role-meta{display:inline-block;font-size:.7rem;font-weight:600;color:var(--blue);background:var(--blue-bg);padding:1px 9px;border-radius:100px;margin-top:4px;}
+.role-period{font-size:.76rem;font-weight:600;color:var(--ink2);background:var(--surface);border:1px solid var(--rule);padding:4px 12px;border-radius:100px;white-space:nowrap;}
+.role-sum{font-size:.89rem;color:var(--ink2);margin-bottom:12px;line-height:1.65;}
 
 /* SECURITY */
 .sec-bg{background:var(--surface);}
 .sec-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;}
-.sec-card{background:var(--white);border:1px solid var(--rule);border-radius:var(--rlg);padding:22px 24px;border-left:3px solid var(--green);transition:transform .2s,box-shadow .2s;}
-.sec-card:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,0,0,.05);}
-.sec-card h5{font-size:.85rem;font-weight:600;color:var(--ink);margin-bottom:7px;}
-.sec-card p{font-size:.82rem;color:var(--ink3);line-height:1.6;}
+.sec-card{background:var(--white);border:1px solid var(--rule);border-radius:var(--rlg);padding:24px;transition:transform .25s,box-shadow .25s;position:relative;}
+.sec-card::before{content:'✓';display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:9px;background:var(--teal-bg);color:var(--teal);font-weight:800;font-size:.85rem;margin-bottom:12px;border:1px solid rgba(20,184,166,.25);}
+.sec-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);}
+.sec-card h5{font-size:.92rem;font-weight:700;color:var(--ink);margin-bottom:6px;}
+.sec-card p{font-size:.83rem;color:var(--ink3);line-height:1.6;}
 
 /* PROJECTS */
 .proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px;}
-.proj-card{background:var(--white);border:1px solid var(--rule);border-radius:var(--rlg);padding:28px;display:flex;flex-direction:column;gap:14px;transition:transform .2s,box-shadow .2s;}
-.proj-card:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,.07);}
-.proj-num{font-size:.68rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--ink3);}
-.proj-card h3{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--ink);}
-.proj-card p{font-size:.83rem;color:var(--ink2);line-height:1.7;flex:1;}
+.proj-card{background:var(--white);border:1px solid var(--rule);border-radius:var(--rlg);padding:28px;display:flex;flex-direction:column;gap:14px;transition:transform .25s,box-shadow .25s,border-color .25s;position:relative;overflow:hidden;}
+.proj-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--grad);opacity:.85;}
+.proj-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(15,23,42,.1);border-color:rgba(20,184,166,.35);}
+.proj-num{font-size:.68rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--ink3);}
+.proj-card h3{font-size:1.06rem;font-weight:800;color:var(--ink);line-height:1.35;letter-spacing:-.2px;}
+.proj-card p{font-size:.85rem;color:var(--ink2);line-height:1.7;flex:1;}
 .proj-stack{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;}
-.ptag{font-size:.72rem;font-weight:500;background:var(--blue-bg);color:var(--blue);border:1px solid rgba(26,86,219,.15);padding:3px 9px;border-radius:var(--r);}
+.ptag{font-size:.72rem;font-weight:600;background:var(--blue-bg);color:var(--blue);border:1px solid rgba(37,99,235,.15);padding:3px 10px;border-radius:100px;}
+.ptop{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;}
+.pbadge{font-size:.68rem;font-weight:700;color:#0f766e;background:var(--teal-bg);border:1px solid rgba(20,184,166,.3);padding:3px 10px;border-radius:100px;white-space:nowrap;}
+.proj-role{font-size:.78rem;font-weight:600;color:var(--teal);margin-top:-8px;}
 
 /* EDUCATION */
 .edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;}
-.edu-card{background:var(--white);border:1px solid var(--rule);border-radius:var(--rlg);padding:22px 24px;}
-.edu-card .degree{font-size:.88rem;font-weight:600;color:var(--ink);margin-bottom:5px;line-height:1.4;}
-.edu-card .college{font-size:.78rem;color:var(--ink3);margin-bottom:14px;line-height:1.5;}
+.edu-card{background:var(--white);border:1px solid var(--rule);border-radius:var(--rlg);padding:24px;border-top:3px solid var(--teal);transition:transform .25s,box-shadow .25s;}
+.edu-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);}
+.edu-card .degree{font-size:.95rem;font-weight:700;color:var(--ink);margin-bottom:5px;line-height:1.4;}
+.edu-card .college{font-size:.8rem;color:var(--ink3);margin-bottom:14px;line-height:1.6;}
 .edu-meta{display:flex;flex-wrap:wrap;gap:6px;}
-.ec{font-size:.71rem;font-weight:500;padding:3px 9px;border-radius:var(--r);border:1px solid;}
+.ec{font-size:.71rem;font-weight:600;padding:3px 10px;border-radius:100px;border:1px solid;}
 .ec-year{background:var(--surface);color:var(--ink2);border-color:var(--rule2);}
-.ec-score{background:var(--green-bg);color:var(--green);border-color:rgba(8,116,67,.2);}
-.ec-rank{background:var(--gold-bg);color:var(--gold);border-color:rgba(146,96,10,.2);}
+.ec-score{background:var(--green-bg);color:var(--green);border-color:rgba(4,120,87,.2);}
+.ec-rank{background:var(--gold-bg);color:var(--gold);border-color:rgba(180,83,9,.2);}
 
 /* AWARDS */
 .aw-row{display:flex;gap:20px;flex-wrap:wrap;}
-.aw-card{flex:1;min-width:280px;background:var(--surface);border:1px solid var(--rule);border-radius:var(--rlg);padding:28px;display:flex;gap:18px;}
-.aw-icon{font-size:1.5rem;width:48px;height:48px;background:var(--white);border:1px solid var(--rule);border-radius:var(--r);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.aw-card h4{font-size:.92rem;font-weight:600;color:var(--ink);margin-bottom:4px;}
-.aw-year{font-size:.75rem;color:var(--ink3);margin-bottom:8px;}
-.aw-card p{font-size:.82rem;color:var(--ink2);line-height:1.6;}
+.aw-card{flex:1;min-width:280px;background:linear-gradient(135deg,var(--navy),var(--navy3));border-radius:var(--rlg);padding:28px;display:flex;gap:18px;position:relative;overflow:hidden;box-shadow:var(--shadow);}
+.aw-card::after{content:'';position:absolute;right:-60px;top:-60px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(45,212,191,.25),transparent 70%);}
+.aw-icon{font-size:1.5rem;width:52px;height:52px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.aw-card h4{font-size:1rem;font-weight:700;color:#fff;margin-bottom:4px;}
+.aw-year{font-size:.75rem;color:#5eead4;margin-bottom:8px;font-weight:600;}
+.aw-card p{font-size:.83rem;color:rgba(226,232,240,.75);line-height:1.6;}
 
 /* CONTACT */
-.ct-bg{background:var(--ink);padding:80px 0;}
-.ct-bg .sec-label{color:rgba(255,255,255,.4);}
+.ct-bg{background:radial-gradient(700px 400px at 90% 0%,rgba(45,212,191,.15),transparent 60%),linear-gradient(160deg,var(--navy),var(--navy3));padding:90px 0;}
+.ct-bg .sec-label{color:var(--teal2);}
 .ct-bg .sec-title{color:var(--white);}
 .ct-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(208px,1fr));gap:14px;align-items:stretch;}
-.ct-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--rlg);padding:18px 20px;text-decoration:none;display:flex;align-items:center;gap:13px;transition:background .2s;min-width:0;overflow:hidden;}
-.ct-card:hover{background:rgba(255,255,255,.1);}
+.ct-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--rlg);padding:18px 20px;text-decoration:none;display:flex;align-items:center;gap:13px;transition:background .2s,border-color .2s,transform .2s;min-width:0;overflow:hidden;}
+.ct-card:hover{background:rgba(45,212,191,.08);border-color:rgba(45,212,191,.4);transform:translateY(-2px);}
 .ct-card>div:not(.ct-icon){min-width:0;flex:1 1 auto;}
-.ct-icon{font-size:1.1rem;width:38px;height:38px;background:rgba(255,255,255,.08);border-radius:var(--r);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:rgba(255,255,255,.7);}
-.ct-lbl{font-size:.66rem;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;}
-.ct-val{font-size:.82rem;font-weight:500;color:rgba(255,255,255,.9);line-height:1.4;overflow-wrap:anywhere;word-break:break-word;}
+.ct-icon{font-size:1.1rem;width:40px;height:40px;background:var(--grad);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--navy);font-weight:700;}
+.ct-lbl{font-size:.66rem;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;}
+.ct-val{font-size:.84rem;font-weight:500;color:#fff;line-height:1.4;overflow-wrap:anywhere;word-break:break-word;}
 
 /* FOOTER */
-footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.06);padding:24px 6%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
-.ft{font-size:.82rem;color:rgba(255,255,255,.3);}
+footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.06);padding:24px 6%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.ft{font-size:.8rem;color:rgba(255,255,255,.4);}
 .ft-links{display:flex;gap:20px;}
-.ft-links a{font-size:.78rem;color:rgba(255,255,255,.35);text-decoration:none;transition:color .2s;}
-.ft-links a:hover{color:rgba(255,255,255,.65);}
+.ft-links a{font-size:.78rem;color:rgba(255,255,255,.5);text-decoration:none;transition:color .2s;}
+.ft-links a:hover{color:var(--teal2);}
 
 /* REVEAL */
 .fade{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease;}
@@ -166,6 +198,10 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.06);padding:
 .fade:nth-child(5){transition-delay:.32s;}
 .fade:nth-child(6){transition-delay:.4s;}
 .fade:nth-child(7){transition-delay:.48s;}
+@media(prefers-reduced-motion:reduce){.fade{opacity:1;transform:none;transition:none;}.hero-eyebrow::before{animation:none;}}
+.fade.in{transition:opacity .6s ease,transform .3s ease,box-shadow .25s,border-color .25s;}
+.fade.in.skill-row:hover,.fade.in.sec-card:hover,.fade.in.edu-card:hover{transform:translateY(-3px);}
+.fade.in.proj-card:hover{transform:translateY(-4px);}
 </style>
 </head>
 <body>
@@ -184,16 +220,17 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.06);padding:
   </div>
 </nav>
 
-<div class="hero" id="about">
+<header class="hero-bg"><div class="hero" id="about">
   <div>
     <p class="hero-eyebrow">Senior .NET Full Stack Developer</p>
     <h1>Arun Prasath V<br><em>Building Enterprise<br>Software that Scales</em></h1>
-    <p class="hero-desc">4+ years designing enterprise web applications, RESTful Web APIs, and ERP integrations at SPARK IT Tech, Tiruppur. Full stack on ASP.NET Core, C#, JavaScript, and jQuery — with bi-directional SAP ERP integration and tuned SQL Server underneath.</p>
+    <p class="hero-desc">4+ years building enterprise web applications, RESTful Web APIs, and ERP integrations for procurement, supply chain, and workforce operations at SPARK IT Tech, Tiruppur. End to end on ASP.NET Core, ASP.NET MVC, and C#, with JavaScript, jQuery, Bootstrap, and DevExtreme on the front end and tuned SQL Server underneath — owning requirement analysis, API design, OWASP-aligned security, IIS deployment, and post-go-live support.</p>
     <div class="hero-chips">
       <span class="chip chip-green">✦ Tech Innovation of the Year 2025</span>
       <span class="chip chip-gold">✦ Workaholic Warrior 2025</span>
       <span class="chip chip-blue">MCA · Dept. First Rank</span>
       <span class="chip chip-gray">Chennimalai, Tamil Nadu</span>
+      <span class="chip chip-green">● Open to work · Coimbatore · Bengaluru · Hybrid / Remote</span>
     </div>
     <div class="hero-actions">
       <a href="mailto:arunprasathit2000@gmail.com" class="btn-p">✉ Get in touch</a>
@@ -202,15 +239,17 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.06);padding:
   </div>
   <div class="avatar-block">
   <div class="avatar">
-    <img src="profilephoto.jpeg" alt="Profile Photo">
+    <img src="profilephoto-small.jpg" alt="Arun Prasath V">
 </div>
     <div class="stat-row">
       <div class="stat"><div class="stat-n">4+</div><div class="stat-l">Years</div></div>
-      <div class="stat"><div class="stat-n">8</div><div class="stat-l">Projects</div></div>
+      <div class="stat"><div class="stat-n">7</div><div class="stat-l">Projects</div></div>
       <div class="stat"><div class="stat-n">2</div><div class="stat-l">Awards</div></div>
     </div>
   </div>
 </div>
+
+</header>
 
 <hr class="divider">
 
@@ -236,7 +275,7 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.06);padding:
           <span class="stag">JavaScript</span><span class="stag">jQuery</span><span class="stag">AJAX</span>
           <span class="stag">HTML5</span><span class="stag">CSS3</span>
           <span class="stag">Bootstrap 5</span><span class="stag">DevExtreme</span><span class="stag">DevExpress</span>
-          <span class="stag">Responsive Design</span>
+          <span class="stag">Dynamic UI Grids</span><span class="stag">Responsive Design</span>
         </div>
       </div>
       <div class="skill-row fade">
@@ -244,7 +283,7 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.06);padding:
         <div class="skill-tags">
           <span class="stag">SQL Server</span><span class="stag">T-SQL</span><span class="stag">Stored Procedures</span>
           <span class="stag">Views &amp; Triggers</span><span class="stag">Indexing &amp; Query Tuning</span>
-          <span class="stag">SQL Agent Jobs</span><span class="stag">Power Query (VB)</span>
+          <span class="stag">SQL Agent Jobs</span>
         </div>
       </div>
       <div class="skill-row fade">
@@ -254,14 +293,24 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.06);padding:
           <span class="stag">Data Exchange APIs</span>
           <span class="stag">SAP-SCM Data Flow</span>
           <span class="stag">Bi-Directional Sync</span>
+          <span class="stag">REST / JSON Integration</span>
           <span class="stag">Mobile Back-End APIs</span>
         </div>
       </div>
       <div class="skill-row fade">
-        <div class="skill-cat">AI &amp; Tooling</div>
+        <div class="skill-cat">Reporting</div>
         <div class="skill-tags">
-          <span class="stag">Claude Code</span><span class="stag">AI-Assisted Dev</span>
-          <span class="stag">Prompt Engineering</span><span class="stag">LLM API Integration</span>
+          <span class="stag">Power Query</span><span class="stag">Excel Automation</span>
+          <span class="stag">Automated Live Reports</span><span class="stag">Data Extraction &amp; Transformation</span>
+        </div>
+      </div>
+      <div class="skill-row fade">
+        <div class="skill-cat">Practices &amp; AI</div>
+        <div class="skill-tags">
+          <span class="stag">Requirement Analysis</span><span class="stag">Code Reviews</span><span class="stag">Clean Code</span>
+          <span class="stag">Cross-Functional Collaboration</span>
+          <span class="stag">Claude Code</span><span class="stag">Prompt Engineering</span>
+          <span class="stag">LLM API Integration</span><span class="stag">AI-Assisted Development</span>
         </div>
       </div>
       <div class="skill-row fade">
@@ -270,6 +319,7 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.06);padding:
           <span class="stag">OWASP Top 10</span><span class="stag">SQL Injection Prevention</span>
           <span class="stag">XSS / CSRF</span><span class="stag">Token Auth</span>
           <span class="stag">RBAC</span><span class="stag">Secure API Design</span>
+          <span class="stag">HTTPS Enforcement</span><span class="stag">Input Validation</span>
         </div>
       </div>
       <div class="skill-row fade">
@@ -277,8 +327,7 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.06);padding:
         <div class="skill-tags">
           <span class="stag">Git</span><span class="stag">Visual Studio</span>
           <span class="stag">IIS Hosting</span><span class="stag">Release Management</span>
-          <span class="stag">ELMAH</span><span class="stag">Production Monitoring</span>
-          <span class="stag">Excel Automation</span>
+          <span class="stag">ELMAH Error Logging</span><span class="stag">Production Monitoring</span>
         </div>
       </div>
     </div>
@@ -295,27 +344,41 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.06);padding:
     <div class="exp-card fade">
       <div class="exp-header">
         <div>
-          <div class="exp-title">Senior .NET Full Stack Developer</div>
-          <div class="exp-co">SPARK IT Tech &nbsp;·&nbsp; Tiruppur, Tamil Nadu</div>
+          <div class="exp-title">SPARK IT Tech</div>
+          <div class="exp-co">Full-time &nbsp;·&nbsp; Tiruppur, Tamil Nadu</div>
         </div>
-        <div class="exp-period">Aug 2022 – Present &nbsp;·&nbsp; 4+ years</div>
+        <div class="exp-period">Aug 2022 – Present &nbsp;·&nbsp; 4 yrs 3 mos</div>
       </div>
       <div class="exp-body">
-        <ul class="exp-list">
-          <li>Designed and developed enterprise-grade ASP.NET Core Web APIs consumed by mobile (M-Force App) and browser-based clients.</li>
-          <li>Built end-to-end Supply Chain Management system covering Purchase Indent → Purchase Order → GRN workflows across Stores, Finance, and Vendor departments.</li>
-          <li>Built the Project Module with a hierarchical Project → Sub-Project → Task structure, and implemented bi-directional SAP synchronization across the full procurement cycle — pushed to SAP, returned into SCM at Purchase Indent, re-synced after Purchase Order, and closed back from SAP at GRN.</li>
-          <li>Engineered SAP-ERP to SCM Data Exchange integration layer, enabling real-time Project Request synchronization via secure REST APIs with retry logic, error recovery, and audit logging.</li>
-          <li>Developed responsive front-end interfaces with JavaScript, jQuery, Bootstrap 5, and DevExtreme / DevExpress — AJAX data grids, cascading dropdowns, dynamic forms, and modal workflows.</li>
-          <li>Implemented application security measures including input validation, SQL injection prevention, XSS/CSRF protection, and secure API authentication.</li>
-          <li>Managed deployment processes including IIS configuration, environment setup, release management, and production monitoring.</li>
-          <li>Leveraged Claude Code (AI) for accelerated development, code review assistance, and intelligent debugging across multiple modules.</li>
-          <li>Developed Excel Export Module using Power Query and VB to automate report generation with live data refresh for PIs, POs, GRN, and inventory records.</li>
-          <li>Created Sample Module for New Development and Redevelopment workflows with approval routing, quantity tracking, and status monitoring.</li>
-          <li>Built HR Portal with attendance tracking, timesheet management, leave application workflows, and administrative dashboards.</li>
-          <li>Optimized SQL Server stored procedures, views, and scheduled jobs to improve query performance and data reliability.</li>
-          <li>Collaborated with cross-functional teams to gather requirements, design DB schemas, and deliver iterative releases.</li>
-        </ul>
+        <div class="role">
+          <div class="role-head">
+            <div><div class="role-title">Senior .NET Full Stack Developer</div><div class="role-meta">Hybrid</div></div>
+            <div class="role-period">Aug 2025 – Present &nbsp;·&nbsp; 1 yr 3 mos</div>
+          </div>
+          <ul class="exp-list">
+            <li>Designed and delivered end-to-end enterprise modules across the SCM ecosystem — procurement (Purchase Indent → Purchase Order → GRN), Project Module, Sample Development (ND &amp; RD), and HR Portal — owning each from requirement analysis through production support.</li>
+            <li>Engineered bi-directional SAP ERP integration keeping SAP and SCM consistent across the full procurement cycle, with automated error recovery, audit logging, and stage-wise reconciliation.</li>
+            <li>Designed and published ASP.NET Core Web APIs consumed by the M-Force mobile application and browser-based clients, documented with Swagger / OpenAPI and secured with token authentication, rate limiting, and input sanitization.</li>
+            <li>Developed responsive front-end interfaces with JavaScript, jQuery, Bootstrap 5, and DevExtreme / DevExpress — AJAX data grids, cascading dropdowns, dynamic forms, and modal workflows.</li>
+            <li>Hardened applications against OWASP Top 10 risks — parameterized queries, XSS / CSRF protection, secure API design, role-based access control, and enforced HTTPS across all production modules.</li>
+            <li>Optimized SQL Server stored procedures, views, and scheduled jobs to improve query performance and data reliability across high-volume transactional modules.</li>
+            <li>Owned the complete deployment lifecycle — IIS configuration, environment setup, release management, and post-release production monitoring for business-critical applications.</li>
+            <li>Automated live SCM reporting through a Power Query Excel module, replacing recurring manual data-extraction work for the Finance and Stores teams.</li>
+            <li>Contributed as a senior team member through code reviews, coding-standard guidance, and technical walkthroughs, collaborating directly with Stores, Purchase, Finance, and HR stakeholders on requirements and rollout.</li>
+          </ul>
+        </div>
+        <div class="role">
+          <div class="role-head">
+            <div><div class="role-title">.NET Full Stack Developer</div><div class="role-meta">On-site</div></div>
+            <div class="role-period">Aug 2022 – Jul 2025 &nbsp;·&nbsp; 3 yrs</div>
+          </div>
+          <p class="role-sum">Developed enterprise web applications and RESTful APIs for procurement, supply chain, and workforce operations using ASP.NET MVC, ASP.NET Core, C#, jQuery, and SQL Server.</p>
+          <ul class="exp-list">
+            <li>Built Supply Chain Management modules covering the Purchase Indent → Purchase Order → GRN lifecycle, and the Sample Development (ND &amp; RD) workflow.</li>
+            <li>Developed and documented the M-Force mobile back-end REST APIs with Swagger / OpenAPI and token-based authentication.</li>
+            <li>Optimized SQL Server stored procedures, views, and scheduled jobs; supported IIS deployment and production issues.</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -346,8 +409,8 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.06);padding:
         <p>Secured APIs with token-based authentication, input validation, and rate limiting to block unauthorized access.</p>
       </div>
       <div class="sec-card fade">
-        <h5>Data Encryption &amp; RBAC</h5>
-        <p>Enforced HTTPS, encrypted sensitive data at rest and in transit, and managed role-based access control.</p>
+        <h5>HTTPS &amp; Role-Based Access</h5>
+        <p>Enforced HTTPS across all production modules and implemented role-based access control with audit-trail logging.</p>
       </div>
       <div class="sec-card fade">
         <h5>Security Code Reviews</h5>
@@ -366,71 +429,70 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.06);padding:
     <p class="sec-title">Key Projects</p>
     <div class="proj-grid">
       <div class="proj-card fade">
-        <div class="proj-num">01 · SCM System</div>
-        <h3>Supply Chain Management</h3>
-        <p>End-to-end procurement and inventory management covering the full PI → GRN lifecycle. Integrated Stores, Purchase, Finance, and Vendor departments into a single unified platform, reducing manual procurement errors and improving material tracking accuracy.</p>
+        <div class="ptop"><div class="proj-num">01 · SCM System</div><span class="pbadge">4 Departments Unified</span></div>
+        <h3>SCM — Supply Chain Management System</h3>
+        <div class="proj-role">Lead Developer</div>
+        <p>End-to-end procurement and inventory platform managing the full PI → PO → GRN lifecycle with real-time approval status tracking and document workflow. Consolidated Stores, Purchase, Finance, and Vendor operations into one secured platform, reducing manual procurement errors and improving material traceability. Tuned stored procedures, views, and scheduled jobs to sustain performance as transaction volume grew.</p>
         <div class="proj-stack">
-          <span class="ptag">ASP.NET MVC</span><span class="ptag">C#</span>
-          <span class="ptag">DevExtreme</span><span class="ptag">SQL Server</span>
+          <span class="ptag">ASP.NET MVC</span><span class="ptag">C#</span><span class="ptag">SQL Server</span>
+          <span class="ptag">Bootstrap 5</span><span class="ptag">jQuery</span><span class="ptag">DevExpress</span><span class="ptag">DevExtreme</span>
         </div>
       </div>
       <div class="proj-card fade">
-        <div class="proj-num">02 · SCM Module</div>
-        <h3>Project Module — Project, Sub-Project &amp; Task</h3>
-        <p>Hierarchical Project → Sub-Project → Task management inside SCM with <strong>bi-directional SAP synchronization across every procurement stage</strong> — project data pushed to SAP and returned into SCM at Purchase Indent, re-synced to SAP after Purchase Order, and closed back from SAP into SCM at GRN. Both systems stay reconciled at each stage, removing manual cross-system data entry.</p>
+        <div class="ptop"><div class="proj-num">02 · SCM Module</div><span class="pbadge">Bi-Directional SAP Sync</span></div>
+        <h3>Project Module — Project, Sub-Project &amp; Task Management</h3>
+        <div class="proj-role">Full Stack Developer</div>
+        <p>Built a hierarchical Project → Sub-Project → Task structure inside SCM, enabling project-wise procurement planning, task allocation, and cost traceability. Implemented <strong>bi-directional SAP synchronization across every procurement stage</strong> — project data pushed to SAP and returned into SCM at Purchase Indent, re-synced to SAP after Purchase Order, and closed back from SAP into SCM at GRN — with automated sync, stage-wise status updates, and failure handling that removed manual cross-system data entry.</p>
         <div class="proj-stack">
-          <span class="ptag">ASP.NET Core</span><span class="ptag">C#</span>
-          <span class="ptag">RESTful APIs</span><span class="ptag">SAP Integration</span><span class="ptag">SQL Server</span>
+          <span class="ptag">ASP.NET Core</span><span class="ptag">C#</span><span class="ptag">RESTful APIs</span>
+          <span class="ptag">SQL Server</span><span class="ptag">jQuery</span><span class="ptag">SAP Integration</span>
         </div>
       </div>
       <div class="proj-card fade">
-        <div class="proj-num">03 · ERP Integration</div>
-        <h3>Data Exchange — SAP &amp; SCM</h3>
-        <p>Built a secure integration layer bridging SAP ERP and the internal SCM system. Project Requests created in SAP are transmitted via APIs and automatically trigger the standard SCM workflow, with retry logic, error recovery, and audit logging maintaining a complete transaction trail.</p>
+        <div class="ptop"><div class="proj-num">03 · ERP Integration</div><span class="pbadge">Built From Scratch</span></div>
+        <h3>Data Exchange — SAP ERP &amp; SCM Integration</h3>
+        <div class="proj-role">Backend Developer</div>
+        <p>Built a secure middleware layer bridging SAP ERP and the internal SCM system, automatically triggering Project Request workflows on synchronization. Implemented retry logic, error recovery, and audit logging to maintain real-time data consistency and provide a complete transaction trail across both platforms.</p>
         <div class="proj-stack">
-          <span class="ptag">ASP.NET Core</span><span class="ptag">C#</span><span class="ptag">SQL Server</span>
+          <span class="ptag">ASP.NET Core</span><span class="ptag">C#</span><span class="ptag">RESTful APIs</span><span class="ptag">SQL Server</span>
         </div>
       </div>
       <div class="proj-card fade">
-        <div class="proj-num">04 · Mobile Backend</div>
-        <h3>M-Force App — REST API</h3>
-        <p>Developed secure, scalable RESTful APIs for an online ordering portal supporting user authentication, product listing, cart management, order processing, payment integration, and real-time order tracking — secured with token authentication, rate limiting, and input sanitization.</p>
+        <div class="ptop"><div class="proj-num">04 · Mobile Backend</div><span class="pbadge">Live in Production</span></div>
+        <h3>M-Force — Mobile Ordering Back-End APIs</h3>
+        <div class="proj-role">API Developer</div>
+        <p>Developed and documented the REST API layer powering an online ordering portal — user authentication, product listing, cart management, order placement, order tracking, and payment integration. Applied API security best practices — token-based authentication, rate limiting, and request input sanitization — to prevent unauthorized access and data exposure.</p>
         <div class="proj-stack">
-          <span class="ptag">ASP.NET Core</span><span class="ptag">C#</span>
-          <span class="ptag">RESTful APIs</span><span class="ptag">Swagger / OpenAPI</span>
+          <span class="ptag">ASP.NET Core</span><span class="ptag">C#</span><span class="ptag">RESTful APIs</span>
+          <span class="ptag">Swagger / OpenAPI</span><span class="ptag">SQL Server</span>
         </div>
       </div>
       <div class="proj-card fade">
-        <div class="proj-num">05 · SCM Module</div>
-        <h3>Sample Module — ND &amp; RD</h3>
-        <p>Developed within the SCM system to manage sample order requests for New Development and Redevelopment processes with multi-stage workflow approvals, quantity tracking, and status monitoring prior to production orders.</p>
+        <div class="ptop"><div class="proj-num">05 · SCM Module</div><span class="pbadge">Workflow Automation</span></div>
+        <h3>Sample Development Module (ND &amp; RD)</h3>
+        <div class="proj-role">Full Stack Developer</div>
+        <p>Built New Development and Re-Development sample workflows with multi-stage approval routing, quantity tracking, and stage-wise status monitoring. Replaced manual sample follow-up with a tracked digital workflow visible to all stakeholders.</p>
         <div class="proj-stack">
           <span class="ptag">ASP.NET MVC</span><span class="ptag">C#</span><span class="ptag">SQL Server</span><span class="ptag">jQuery</span>
         </div>
       </div>
       <div class="proj-card fade">
-        <div class="proj-num">06 · HR System</div>
-        <h3>HR Portal — Workforce Management</h3>
-        <p>Full employee attendance, check-in/out, timesheet, and leave management system with role-based admin dashboards and audit-trail logging. Streamlined multi-level approval workflows and significantly reduced manual HR processing.</p>
+        <div class="ptop"><div class="proj-num">06 · HR System</div><span class="pbadge">Company-Wide Rollout</span></div>
+        <h3>HR Portal — Attendance &amp; Workforce Management</h3>
+        <div class="proj-role">Full Stack Developer</div>
+        <p>Delivered employee attendance, check-in/out tracking, timesheet management, and leave application workflows with configurable multi-level approval routing. Implemented role-based dashboards and audit-trail logging for HR, management, and department heads.</p>
         <div class="proj-stack">
-          <span class="ptag">ASP.NET Core</span><span class="ptag">C#</span>
-          <span class="ptag">JavaScript</span><span class="ptag">jQuery</span>
+          <span class="ptag">ASP.NET Core</span><span class="ptag">C#</span><span class="ptag">JavaScript</span>
+          <span class="ptag">jQuery</span><span class="ptag">SQL Server</span>
         </div>
       </div>
       <div class="proj-card fade">
-        <div class="proj-num">07 · Excel Automation</div>
-        <h3>Power Query Export Module</h3>
-        <p>Automated extraction of live SCM data into Excel with structured transformation, filtering, and auto-refresh capability for PIs, POs, GRN, and inventory records — eliminating manual reporting overhead for Finance and Stores.</p>
+        <div class="ptop"><div class="proj-num">07 · Reporting Automation</div><span class="pbadge">Manual Effort Eliminated</span></div>
+        <h3>Excel Export Module — Power Query Integration</h3>
+        <div class="proj-role">Automation Developer</div>
+        <p>Automated extraction of live SCM data into structured, auto-refreshing Excel reports covering Purchase Indents, Purchase Orders, GRNs, and inventory records. Replaced a recurring manual data-pull process for Finance and Stores with one-click refresh against live production data.</p>
         <div class="proj-stack">
-          <span class="ptag">Power Query</span><span class="ptag">VBA</span><span class="ptag">SQL Server</span>
-        </div>
-      </div>
-      <div class="proj-card fade">
-        <div class="proj-num">08 · AI Integration</div>
-        <h3>Claude Code — AI-Assisted Dev</h3>
-        <p>Integrated Claude Code into the development workflow to accelerate feature development, automate repetitive coding tasks, and improve code quality through intelligent debugging, API design suggestions, and documentation generation.</p>
-        <div class="proj-stack">
-          <span class="ptag">Claude Code</span><span class="ptag">LLM API</span><span class="ptag">AI Workflows</span>
+          <span class="ptag">Power Query</span><span class="ptag">Microsoft Excel</span><span class="ptag">SQL Server</span>
         </div>
       </div>
     </div>
@@ -461,6 +523,14 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.06);padding:
           <span class="ec ec-year">2017 – 2020</span>
           <span class="ec ec-score">73% · First Class</span>
           <span class="ec ec-rank">★ Dept. First Rank</span>
+        </div>
+      </div>
+      <div class="edu-card fade">
+        <div class="degree">Languages</div>
+        <div class="college">English — Professional Working Proficiency<br>Tamil — Native / Bilingual</div>
+        <div class="edu-meta">
+          <span class="ec ec-year">English</span>
+          <span class="ec ec-year">Tamil</span>
         </div>
       </div>
     </div>
